@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de Cambios en el Reglamento Académico | UNPHU</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --unphu-green:#439441;
+  --unphu-blue:#0F385A;
+  --unphu-blue-alt:#003E7E;
+  --unphu-gray:#9A999E;
+  --alert-red:#C53030;
+  --alert-red-bg:#FDE8E8;
+  --alert-orange:#E67E22;
+  --alert-orange-bg:#FEF2F2;
+  --success-green:#059669;
+  --success-green-bg:#D1FAE5;
+  --warning-yellow:#D97706;
+  --warning-yellow-bg:#FEF3C7;
+}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{margin:0;font-family:'Open Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1a1a1a;background:#fff;line-height:1.6}
+.header{background:#fff;border-bottom:4px solid var(--unphu-green)}
+.header__inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem}
+.header__brand img{height:56px;width:auto;display:block}
+.header__title{font-family:'Montserrat','Open Sans',Arial,sans-serif;line-height:1.15}
+.header__title .u{display:block;font-weight:700;font-size:1.15rem;color:var(--unphu-blue);letter-spacing:.3px}
+.header__title .s{display:block;font-weight:600;font-size:.95rem;color:var(--unphu-green);text-transform:uppercase;letter-spacing:.6px}
+.container{max-width:1080px;padding:2rem 1.25rem 3rem;margin:0 auto}
+h1,h2,h3,h4{font-family:'Montserrat','Open Sans',Arial,sans-serif;color:var(--unphu-blue);line-height:1.2}
+h1{font-size:2.2rem;margin:0 0 1.5rem;border-bottom:3px solid var(--unphu-green);padding-bottom:.75rem}
+h2{font-size:1.5rem;margin:2.5rem 0 1rem;background:var(--unphu-blue);color:#fff;padding:.65rem 1rem;border-radius:.5rem}
+h3{font-size:1.25rem;margin:1.5rem 0 .75rem;color:var(--unphu-green)}
+h4{font-size:1.05rem;margin:1.25rem 0 .5rem}
+p{margin:.75rem 0}
+.lead{font-size:1.1rem;color:#4a4a4a;margin-bottom:1.5rem;font-weight:500}
+.alert{padding:1rem 1.25rem;border-radius:.6rem;margin:1.5rem 0;border-left:5px solid;font-weight:500}
+.alert-critical{background:var(--alert-red-bg);border-color:var(--alert-red);color:var(--alert-red)}
+.alert-warning{background:var(--warning-yellow-bg);border-color:var(--warning-yellow);color:#92400E}
+.alert-info{background:#EFF6FF;border-color:var(--unphu-blue-alt);color:#1E3A8A}
+.alert-success{background:var(--success-green-bg);border-color:var(--success-green);color:#065F46}
+.alert-title{font-size:1.1rem;font-weight:700;margin-bottom:.35rem}
+.comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
+.comparison-card{border:2px solid;border-radius:.8rem;padding:1.25rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.comparison-card.old{border-color:var(--alert-orange);background:#FFFAF5}
+.comparison-card.new{border-color:var(--success-green);background:#F0FDF4}
+.comparison-card__header{font-size:1.1rem;font-weight:700;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid}
+.comparison-card.old .comparison-card__header{color:var(--alert-orange);border-color:var(--alert-orange)}
+.comparison-card.new .comparison-card__header{color:var(--success-green);border-color:var(--success-green)}
+.comparison-card__badge{display:inline-block;padding:.3rem .7rem;border-radius:.4rem;font-size:.85rem;font-weight:600;margin-bottom:.75rem}
+.badge-old{background:var(--alert-orange-bg);color:var(--alert-orange)}
+.badge-new{background:var(--success-green-bg);color:var(--success-green)}
+.comparison-card__content{font-size:.95rem;line-height:1.6}
+.formula{background:#F8F9FA;border:1px solid #DEE2E6;border-radius:.5rem;padding:.75rem 1rem;margin:.75rem 0;font-family:'Courier New',monospace;text-align:center;font-size:1.05rem;font-weight:600;color:var(--unphu-blue)}
+.highlight-box{background:#FFF9E6;border:2px solid #F59E0B;border-radius:.6rem;padding:1rem 1.25rem;margin:1.25rem 0}
+.highlight-box__title{font-weight:700;color:#92400E;margin-bottom:.5rem;font-size:1.05rem}
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+thead{background:var(--unphu-blue);color:#fff}
+th{padding:.75rem 1rem;text-align:left;font-weight:600;border-bottom:2px solid var(--unphu-blue-alt)}
+td{padding:.65rem 1rem;border-bottom:1px solid #E5E7EB}
+tbody tr:nth-child(even){background:#F9FAFB}
+.badge{display:inline-block;padding:.25rem .6rem;border-radius:.3rem;font-size:.85rem;font-weight:600}
+.badge-green{background:var(--success-green-bg);color:var(--success-green)}
+.badge-orange{background:var(--warning-yellow-bg);color:var(--warning-yellow)}
+.badge-red{background:var(--alert-red-bg);color:var(--alert-red)}
+.badge-blue{background:#DBEAFE;color:#1E40AF}
+.icon-box{display:flex;gap:1rem;align-items:start;margin:1rem 0;padding:1rem;background:#F9FAFB;border-radius:.5rem}
+.icon-box__icon{font-size:2rem;flex-shrink:0}
+.icon-box__content{flex:1}
+ul,ol{margin:.75rem 0;padding-left:1.75rem}
+li{margin:.5rem 0}
+.step-list{counter-reset:step;list-style:none;padding-left:0}
+.step-list li{counter-increment:step;position:relative;padding-left:3.5rem;margin:1.5rem 0}
+.step-list li:before{content:counter(step);position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;background:var(--unphu-green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}
+.footer{margin-top:3rem;padding:1.5rem 0;border-top:3px solid var(--unphu-green);text-align:center;color:#666;font-size:.9rem}
+.footer .badge{background:var(--unphu-blue);color:#fff;margin-right:.5rem}
+@media print{
+  .header{border-bottom:2px solid var(--unphu-green)}
+  .comparison-grid{grid-template-columns:1fr;gap:1rem}
+  .alert,.comparison-card{page-break-inside:avoid}
+}
+@media (max-width: 768px){
+  h1{font-size:1.75rem}
+  h2{font-size:1.25rem}
+  .comparison-grid{grid-template-columns:1fr}
+  .header__title .u{font-size:1rem}
+  .header__title .s{font-size:.85rem}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header__inner">
+    <div class="header__brand">
+      <img src="https://unphu.edu.do/wp-content/uploads/2020/01/logo-unphu-2020-optimizado.png" alt="UNPHU">
+    </div>
+    <div class="header__title">
+      <span class="u">Universidad Nacional Pedro Henríquez Ureña</span>
+      <span class="s">Vicerrectoría Académica</span>
+    </div>
+  </div>
+</header>
+<main class="container">
+
+<h1>Guía de Cambios en el Reglamento Académico</h1>
+
+<p class="lead">Esta guía presenta un análisis comparativo entre el <strong>Reglamento de Exámenes, Pruebas y Sistema de Evaluación (2017)</strong> y el nuevo <strong>Reglamento del Sistema de Evaluación y Progreso Académico para Técnico Superior y Grado (VCAC-200-REG-005)</strong>.</p>
+
+<div class="alert alert-critical">
+  <div class="alert-title">⚠ CAMBIO MÁS IMPORTANTE</div>
+  La diferencia más trascendental radica en el cambio de un <strong>sistema de promedios</strong> a un <strong>sistema de acumulación de puntos (sumatoria)</strong>, así como un endurecimiento en las políticas de asistencia.
+</div>
+
+<!-- ========================================= -->
+<h2>1. Cálculo de la Calificación Final</h2>
+
+<p>Este es el cambio fundamental que afecta cómo se determina la nota final de cada asignatura. El método anterior basado en promedios ha sido reemplazado por un sistema acumulativo directo.</p>
+
+<div class="comparison-grid">
+  <div class="comparison-card old">
+    <span class="comparison-card__badge badge-old">📊 REGLAMENTO 2017</span>
+    <div class="comparison-card__header">Sistema de Promedios</div>
+    <div class="comparison-card__content">
+      <p><strong>Metodología:</strong> Se calculaba el promedio de tres grandes bloques dividiendo entre tres.</p>
+      <div class="formula">
+        (Nota Práctica + Promedio Parciales + Nota Final) ÷ 3
+      </div>
+      <p><strong>Ejemplo citado textualmente:</strong></p>
+      <blockquote style="font-style:italic;color:#666;margin:.5rem 0;padding-left:1rem;border-left:3px solid var(--alert-orange)">
+        "La calificación final de las asignaturas se obtendrá mediante el cálculo del promedio que resulte de la puntuación arrojada en la prueba final, aunado al promedio de las pruebas parciales y a los resultados obtenidos en los trabajos prácticos..."
+      </blockquote>
+      <p><strong>Resultado:</strong> 210 puntos ÷ 3 = 70 puntos (promedio)</p>
+    </div>
+  </div>
+  
+  <div class="comparison-card new">
+    <span class="comparison-card__badge badge-new">✓ NUEVO REGLAMENTO</span>
+    <div class="comparison-card__header">Sistema de Acumulación</div>
+    <div class="comparison-card__content">
+      <p><strong>Metodología:</strong> Se suman directamente todos los puntos obtenidos en cada corte evaluativo.</p>
+      <div class="formula">
+        Acum. 1 + Acum. 2 + Acum. 3 + Evaluación Final
+      </div>
+      <p><strong>Definición oficial:</strong></p>
+      <blockquote style="font-style:italic;color:#666;margin:.5rem 0;padding-left:1rem;border-left:3px solid var(--success-green)">
+        "Calificación total: corresponde a la suma total del valor asignado a cada rubro (acumulados y evaluación final) que componen el método de evaluación asignado."
+      </blockquote>
+      <p><strong>Resultado:</strong> Suma directa de puntos (ej: 20 + 25 + 30 + 35 = 110 puntos)</p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-box__title">💡 Impacto Práctico</div>
+  <p>Este cambio elimina la división final, lo que significa que cada punto obtenido cuenta directamente hacia la calificación final. Esto puede resultar en una percepción más clara del desempeño acumulado, pero también requiere una comprensión diferente de cómo se distribuyen los puntos a lo largo del semestre.</p>
+</div>
+
+<!-- ========================================= -->
+<h2>2. Peso del Examen Final</h2>
+
+<p>El valor relativo del examen final dentro del sistema de evaluación ha sido significativamente reducido en el nuevo reglamento.</p>
+
+<div class="comparison-grid">
+  <div class="comparison-card old">
+    <span class="comparison-card__badge badge-old">📊 REGLAMENTO 2017</span>
+    <div class="comparison-card__header">Examen Final: 100 puntos</div>
+    <div class="comparison-card__content">
+      <ul>
+        <li>Valor: <strong>100 puntos</strong> para el promedio</li>
+        <li>Peso relativo: <strong>Equivalente a 1/3 de la nota global</strong> (≈33%)</li>
+        <li>Impacto: Alto peso relativo; podía compensar o afectar significativamente el resultado final</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="comparison-card new">
+    <span class="comparison-card__badge badge-new">✓ NUEVO REGLAMENTO</span>
+    <div class="comparison-card__header">Evaluación Final: Máximo 35 puntos</div>
+    <div class="comparison-card__content">
+      <ul>
+        <li>Valor máximo: <strong>35 puntos</strong> dentro de la sumatoria total</li>
+        <li>Peso relativo: <strong>35% del total</strong> (en la distribución más común)</li>
+        <li>Impacto: Peso reducido; mayor énfasis en el trabajo acumulativo durante el semestre</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info">
+  <div class="alert-title">📌 Implicación Académica</div>
+  Este cambio promueve un aprendizaje más continuo y reduce la presión sobre un único evento evaluativo. Los estudiantes deben enfocarse más en el desempeño sostenido durante todo el período académico.
+</div>
+
+<!-- ========================================= -->
+<h2>3. Política de Asistencia</h2>
+
+<p>Las normas de asistencia se han vuelto más estrictas, reduciendo el número de inasistencias permitidas por crédito académico.</p>
+
+<div class="comparison-grid">
+  <div class="comparison-card old">
+    <span class="comparison-card__badge badge-old">📊 REGLAMENTO 2017</span>
+    <div class="comparison-card__header">Política Más Flexible</div>
+    <div class="comparison-card__content">
+      <p><strong>Regla:</strong> 4 inasistencias permitidas por cada crédito de teoría</p>
+      <table style="width:100%;margin-top:.75rem">
+        <thead>
+          <tr>
+            <th>Créditos</th>
+            <th>Inasistencias Permitidas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 crédito</td><td><span class="badge-orange badge">4 ausencias</span></td></tr>
+          <tr><td>2 créditos</td><td><span class="badge-orange badge">8 ausencias</span></td></tr>
+          <tr><td>3 créditos</td><td><span class="badge-orange badge">12 ausencias</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="comparison-card new">
+    <span class="comparison-card__badge badge-new">✓ NUEVO REGLAMENTO</span>
+    <div class="comparison-card__header">Política Más Estricta</div>
+    <div class="comparison-card__content">
+      <p><strong>Regla:</strong> 3 horas de ausencia por cada 15 horas de docencia (aprox. 20% de la carga horaria)</p>
+      <table style="width:100%;margin-top:.75rem">
+        <thead>
+          <tr>
+            <th>Créditos (Horas)</th>
+            <th>Inasistencias Permitidas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 crédito (15h)</td><td><span class="badge-green badge">3 ausencias</span></td></tr>
+          <tr><td>2 créditos (30h)</td><td><span class="badge-green badge">6 ausencias</span></td></tr>
+          <tr><td>3 créditos (45h)</td><td><span class="badge-green badge">9 ausencias</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="icon-box">
+  <div class="icon-box__icon">📉</div>
+  <div class="icon-box__content">
+    <strong>Reducción en ausencias permitidas:</strong>
+    <ul style="margin-top:.5rem">
+      <li>1 crédito: De 4 a 3 ausencias (−1 ausencia, −25%)</li>
+      <li>2 créditos: De 8 a 6 ausencias (−2 ausencias, −25%)</li>
+      <li>3 créditos: De 12 a 9 ausencias (−3 ausencias, −25%)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="alert alert-warning">
+  <div class="alert-title">⚠ Advertencia Importante</div>
+  <p>Superar el máximo de inasistencias permitidas resulta en una calificación <strong>FI (Falta por Inasistencia)</strong>, la cual <strong>afectará el índice académico del período y el acumulado</strong>.</p>
+</div>
+
+<!-- ========================================= -->
+<h2>4. Límite de Repitencia de Asignaturas</h2>
+
+<p>El nuevo reglamento introduce un límite explícito y estricto sobre cuántas veces un estudiante puede cursar una misma asignatura reprobada.</p>
+
+<div class="comparison-grid">
+  <div class="comparison-card old">
+    <span class="comparison-card__badge badge-old">📊 REGLAMENTO 2017</span>
+    <div class="comparison-card__header">Enfoque en Condición Académica General</div>
+    <div class="comparison-card__content">
+      <p>El reglamento anterior se enfocaba principalmente en la condición académica por índice global:</p>
+      <ul>
+        <li>Prueba Académica</li>
+        <li>Deficiencia Académica</li>
+        <li>No especificaba un límite explícito por asignatura individual</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="comparison-card new">
+    <span class="comparison-card__badge badge-new">✓ NUEVO REGLAMENTO</span>
+    <div class="comparison-card__header">Límite Explícito por Asignatura</div>
+    <div class="comparison-card__content">
+      <p><strong>Regla clara y estricta:</strong></p>
+      <blockquote style="font-style:italic;color:#666;margin:.75rem 0;padding-left:1rem;border-left:3px solid var(--success-green)">
+        "Un estudiante podrá cursar una misma asignatura con resultado de calificación reprobada hasta tres (3) veces... <strong>Si el estudiante reprueba la asignatura por cuarta vez, será dado de baja de la carrera actual.</strong>"
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-critical">
+  <div class="alert-title">🚨 CONSECUENCIA CRÍTICA</div>
+  <p><strong>Regla "3 strikes":</strong> Máximo 3 intentos por asignatura. Al reprobar una materia por <strong>cuarta vez</strong>, el estudiante es automáticamente dado de <strong>baja de la carrera</strong>.</p>
+  <p style="margin-top:.75rem">Este es un cambio de alta trascendencia que requiere planificación estratégica del estudiante en asignaturas de alta dificultad.</p>
+</div>
+
+<div class="icon-box">
+  <div class="icon-box__icon">🎯</div>
+  <div class="icon-box__content">
+    <strong>Visualización del proceso:</strong>
+    <ol style="margin-top:.5rem;line-height:1.8">
+      <li><span class="badge badge-green">1ra vez</span> – Primera oportunidad</li>
+      <li><span class="badge badge-orange">2da vez</span> – Segunda oportunidad</li>
+      <li><span class="badge badge-orange">3ra vez</span> – Última oportunidad</li>
+      <li><span class="badge badge-red">4ta vez</span> – <strong>Baja de la carrera</strong></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================= -->
+<h2>5. Calificación "D" (60-69 puntos)</h2>
+
+<p>La interpretación y consecuencias de obtener una calificación "D" han sido clarificadas en el nuevo reglamento.</p>
+
+<div class="comparison-grid">
+  <div class="comparison-card old">
+    <span class="comparison-card__badge badge-old">📊 REGLAMENTO 2017</span>
+    <div class="comparison-card__header">Denominación: "Insuficiente"</div>
+    <div class="comparison-card__content">
+      <p>La calificación "D" (60-69 puntos) se denominaba <strong>"Insuficiente"</strong>, pero no se especificaba explícitamente la obligación de repetir la asignatura.</p>
+    </div>
+  </div>
+  
+  <div class="comparison-card new">
+    <span class="comparison-card__badge badge-new">✓ NUEVO REGLAMENTO</span>
+    <div class="comparison-card__header">Especificación Clara: Repetición Obligatoria</div>
+    <div class="comparison-card__content">
+      <p>Se mantiene la denominación <strong>"Insuficiente"</strong>, pero ahora se especifica claramente:</p>
+      <blockquote style="font-style:italic;color:#666;margin:.75rem 0;padding-left:1rem;border-left:3px solid var(--success-green)">
+        Calificación "D" (60-69 puntos): "Insuficiente" – <strong>deberá repetir la asignatura (Reprobado)</strong>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-box__title">💡 Clarificación Importante</div>
+  <p>Aunque una "D" pueda parecer una nota "aprobatoria" en otros contextos, en la UNPHU bajo el nuevo reglamento representa una calificación <strong>reprobada</strong> que <strong>requiere obligatoriamente repetir la materia</strong>.</p>
+</div>
+
+<!-- ========================================= -->
+<h2>6. Método de Evaluación y Cortes en Calendario</h2>
+
+<p>El nuevo reglamento establece un sistema estructurado de evaluación a lo largo del semestre con cortes específicos en el calendario académico.</p>
+
+<h3>Distribución Temporal de Evaluaciones</h3>
+
+<div class="icon-box">
+  <div class="icon-box__icon">📅</div>
+  <div class="icon-box__content">
+    <strong>Calendario de evaluaciones:</strong>
+    <ul style="margin-top:.5rem;line-height:1.8">
+      <li><span class="badge badge-blue">Semana 4</span> – Acumulativo 1</li>
+      <li><span class="badge badge-blue">Semana 8</span> – Acumulativo 2</li>
+      <li><span class="badge badge-blue">Semana 12</span> – Acumulativo 3</li>
+      <li><span class="badge badge-green">Semana 15</span> – Evaluación Final</li>
+    </ul>
+    <div class="formula" style="margin-top:1rem">
+      Calif. Final = Acum. 1 + Acum. 2 + Acum. 3 + Eval. Final
+    </div>
+  </div>
+</div>
+
+<h3>Métodos de Evaluación Adicionales</h3>
+
+<p>El nuevo reglamento contempla diferentes distribuciones de puntos según el tipo de asignatura:</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Método</th>
+        <th>Acumulado 1</th>
+        <th>Acumulado 2</th>
+        <th>Acumulado 3</th>
+        <th>Evaluación Final</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Estudios Generales</strong><br><small>(Mét. por defecto)</small></td>
+        <td>15</td>
+        <td>25</td>
+        <td>25</td>
+        <td>35</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Distribución 1</strong></td>
+        <td>20</td>
+        <td>20</td>
+        <td>25</td>
+        <td>35</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Distribución 2</strong></td>
+        <td>15</td>
+        <td>25</td>
+        <td>30</td>
+        <td>30</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Distribución 3</strong></td>
+        <td>20</td>
+        <td>25</td>
+        <td>25</td>
+        <td>30</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Distribución 4</strong></td>
+        <td>20</td>
+        <td>30</td>
+        <td>30</td>
+        <td>20</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Método teoría con TP</strong></td>
+        <td>20</td>
+        <td>20</td>
+        <td>30 (TP)</td>
+        <td>30</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><strong>Método Modulares</strong></td>
+        <td>20</td>
+        <td>20</td>
+        <td>20</td>
+        <td>INFORME (40)</td>
+        <td>100</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>Nota:</strong> Laboratorio y Postgrado se rigen por RU (Reglamentación Universitaria específica).</p>
+
+<!-- ========================================= -->
+<h2>7. Requisitos para que una Asignatura sea Calificada</h2>
+
+<p>El nuevo reglamento especifica claramente las condiciones académicas y administrativas que deben cumplirse.</p>
+
+<h3>Condiciones Obligatorias</h3>
+
+<ol class="step-list">
+  <li>
+    <strong>Registro en la Universidad</strong>
+    <p>El estudiante debe estar debidamente registrado en la universidad.</p>
+  </li>
+  <li>
+    <strong>Pago de Derechos de Matrícula</strong>
+    <p>Haber pagado los derechos de matrícula correspondientes al período académico.</p>
+  </li>
+  <li>
+    <strong>Inscripción Formal en la Asignatura</strong>
+    <p>Estar formalmente inscrito en la asignatura que se desea calificar.</p>
+  </li>
+  <li>
+    <strong>Asistencia Regular a Clases</strong>
+    <p>Para tener derecho a la evaluación final, el estudiante debe haber asistido regularmente a clases.</p>
+  </li>
+</ol>
+
+<div class="alert alert-critical">
+  <div class="alert-title">⚠ Consecuencia de Inasistencias Excesivas</div>
+  <p>Superar el máximo de inasistencias permitidas lleva una calificación <strong>FI (Falta por Inasistencia)</strong>, la cual <strong>afectará el índice académico del período y el acumulado</strong>.</p>
+  <p style="margin-top:.5rem"><strong>Esto significa que las ausencias excesivas no solo resultan en pérdida de la materia, sino que también impactan negativamente el índice general del estudiante.</strong></p>
+</div>
+
+<!-- ========================================= -->
+<h2>Cuadro Comparativo Resumido</h2>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:25%">Criterio</th>
+        <th style="width:37.5%">Reglamento 2017</th>
+        <th style="width:37.5%">Nuevo Reglamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Enfoque de Evaluación</strong></td>
+        <td>Basado en <strong>promedios</strong>. Se promedian tres grandes bloques.</td>
+        <td>Basado en <strong>sumatoria/acumulación</strong>. Se suman los puntos obtenidos.</td>
+      </tr>
+      <tr>
+        <td><strong>Fórmula de Nota Final</strong></td>
+        <td>(Nota Práctica + Promedio Parciales + Nota Final) ÷ 3</td>
+        <td>Acum. 1 + Acum. 2 + Acum. 3 + Eval. Final</td>
+      </tr>
+      <tr>
+        <td><strong>Peso del Examen Final</strong></td>
+        <td>100 puntos (≈33% del total)</td>
+        <td><strong>Máximo 35 puntos</strong> (35% del total)</td>
+      </tr>
+      <tr>
+        <td><strong>Escala de Asistencia</strong></td>
+        <td><strong>Más flexible.</strong> 4 ausencias por crédito (ej: 12 para 3 créditos)</td>
+        <td><strong>Más estricta.</strong> 3 horas ausencia / 15h docencia (ej: 9 para 3 créditos)</td>
+      </tr>
+      <tr>
+        <td><strong>Límite de Repitencia</strong></td>
+        <td>Enfoque en condición académica por índice general</td>
+        <td><strong>Máximo 3 intentos</strong> por asignatura. <span class="badge badge-red">4ta vez = Baja</span></td>
+      </tr>
+      <tr>
+        <td><strong>Calificación "D" (60-69)</strong></td>
+        <td>"Insuficiente" (sin especificar repitencia explícitamente)</td>
+        <td>"Insuficiente" – <strong>Deberá repetir la asignatura</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================= -->
+<h2>Recomendaciones para Estudiantes</h2>
+
+<div class="alert alert-success">
+  <div class="alert-title">✓ Estrategias para el Éxito Académico</div>
+  <ul style="margin-top:.75rem">
+    <li><strong>Mantenga asistencia regular:</strong> Con márgenes de ausencia más reducidos, cada clase cuenta.</li>
+    <li><strong>Enfóquese en el trabajo acumulativo:</strong> El nuevo sistema premia el esfuerzo constante durante todo el semestre, no solo en el examen final.</li>
+    <li><strong>Planifique estratégicamente:</strong> Si una materia presenta dificultad, considere apoyo académico temprano. Recuerde la regla de máximo 3 intentos.</li>
+    <li><strong>Monitoree su progreso continuamente:</strong> El sistema acumulativo permite saber en tiempo real su posición académica.</li>
+    <li><strong>Cumpla con requisitos administrativos:</strong> Asegúrese de estar debidamente inscrito y al día con pagos para evitar problemas de calificación.</li>
+  </ul>
+</div>
+
+<!-- ========================================= -->
+<div class="footer">
+  <span class="badge">UNPHU</span>
+  <span>Universidad Nacional Pedro Henríquez Ureña · Vicerrectoría Académica</span>
+  <p style="margin-top:.75rem;font-size:.85rem">Reglamento del Sistema de Evaluación y Progreso Académico (VCAC-200-REG-005)</p>
+</div>
+
+</main>
+</body>
+</html>
